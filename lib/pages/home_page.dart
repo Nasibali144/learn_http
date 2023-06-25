@@ -10,11 +10,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   /// api
-  final String path = "https://jsonplaceholder.typicode.com/posts";
+
+  final domain = "jsonplaceholder.typicode.com"; /// baseUrl
+  final apiPosts = "/posts";
+  final apiUsers = "/users";
+
+
   String text = 'No Data';
 
-  void getDataFromCloud(String path) async {
-    Uri url = Uri.parse(path);
+  void getDataFromCloud({required String baseUrl, required String api}) async {
+    Uri url = Uri.https(baseUrl, api);
     Response response = await get(url);
 
     if(response.statusCode == 200) {
@@ -26,7 +31,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    getDataFromCloud(path);
+    getDataFromCloud(
+      baseUrl: domain,
+      api: apiPosts,
+    );
   }
 
   @override
