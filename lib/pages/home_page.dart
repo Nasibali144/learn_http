@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
             margin: const EdgeInsets.symmetric(vertical: 2.5, horizontal: 10),
             child: ListTile(
               leading: Text(movie.id.toString(), style: Theme.of(context).textTheme.headlineSmall,),
-              title: Text(movie.movie, style:  Theme.of(context).textTheme.titleMedium,),
+              title: Text(movie.movie, style:  Theme.of(context).textTheme.titleLarge,),
               subtitle: Text(movie.imdbUrl, style: Theme.of(context).textTheme.labelMedium),
               trailing: Text(movie.rating.toString(), style: Theme.of(context).textTheme.bodyMedium),
             ),
