@@ -39,5 +39,13 @@ void main() async {
 
       expect(list.length, 10);
     });
+
+    test("Snapshot 5. Network.parseMovie", () async {
+      final data = await Network.methodGet(api: Network.apiMovies, id: 1);
+      Movie movie = Network.parseMovie(data!);
+      print(movie);
+
+      expect(movie, const TypeMatcher<Movie>());
+    });
   });
 }

@@ -28,4 +28,10 @@ sealed class Network {
     final json = jsonDecode(data) as List; /// String => json(Map, List, ...)
     return json.map((item) => Movie.fromJson(item)).toList(); /// json => object
   }
+
+  static Movie parseMovie(String data) {
+    final json = jsonDecode(data);
+    final movie = Movie.fromJson(json);
+    return movie;
+  }
 }

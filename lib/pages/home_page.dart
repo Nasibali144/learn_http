@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn_http/models/movie.dart';
 import 'package:learn_http/services/network_service.dart';
+import 'package:learn_http/views/movie_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -34,16 +35,7 @@ class _HomePageState extends State<HomePage> {
       body: ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
-          final movie = items[index];
-          return Card(
-            margin: const EdgeInsets.symmetric(vertical: 2.5, horizontal: 10),
-            child: ListTile(
-              leading: Text(movie.id.toString(), style: Theme.of(context).textTheme.headlineSmall,),
-              title: Text(movie.movie, style:  Theme.of(context).textTheme.titleLarge,),
-              subtitle: Text(movie.imdbUrl, style: Theme.of(context).textTheme.labelMedium),
-              trailing: Text(movie.rating.toString(), style: Theme.of(context).textTheme.bodyMedium),
-            ),
-          );
+          return MovieCard(movie: items[index]);
         },
       ),
     );
