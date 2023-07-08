@@ -16,15 +16,15 @@ dependencies:
   # icons
   cupertino_icons: ^1.0.2
 
-
   # network
-  http: ^1.0.0
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  test: ^1.24.1
 
 flutter:
 
