@@ -1,7 +1,6 @@
 import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 import 'package:learn_http/models/harry_potter.dart';
 import 'package:learn_http/services/network_service.dart';
 
