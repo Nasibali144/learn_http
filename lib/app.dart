@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn_http/pages/home_page.dart';
+import 'package:learn_http/pages/main_page.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -10,7 +10,7 @@ class App extends StatelessWidget {
       theme: ThemeData.light(useMaterial3: true),
       darkTheme: ThemeData.dark(useMaterial3: true),
       themeMode: ThemeMode.dark,
-      home: const HomePage(),
+      home: const MainPage(),
     );
   }
 }

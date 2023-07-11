@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn_http/models/movie.dart';
-import 'package:learn_http/pages/error_page.dart';
-import 'package:learn_http/pages/loading_page.dart';
+import 'package:learn_http/pages/movie/error_page.dart';
+import 'package:learn_http/pages/movie/loading_page.dart';
 import 'package:learn_http/services/network_service.dart';
 
 class DetailPage extends StatelessWidget {
