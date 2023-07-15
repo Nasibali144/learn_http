@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn_http/pages/harry_potter/harry_home_page.dart';
 import 'package:learn_http/pages/movie/home_page.dart';
+import 'package:learn_http/pages/users/user_list_page.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -40,6 +41,20 @@ class MainPage extends StatelessWidget {
               style: Theme.of(context).elevatedButtonTheme.style,
               child: const Text(
                 "Harry Potter",
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const UserListPage(),
+                  ),
+                );
+              },
+              style: Theme.of(context).elevatedButtonTheme.style,
+              child: const Text(
+                "Users",
               ),
             ),
           ],
