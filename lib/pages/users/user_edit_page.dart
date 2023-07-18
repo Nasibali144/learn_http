@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_http/models/users.dart';
+import 'package:learn_http/services/network_service.dart';
 
 class UserEditPage extends StatefulWidget {
   final User user;
@@ -29,10 +30,40 @@ class _UserEditPageState extends State<UserEditPage> {
      setState(() {});
    }
 
+  void editUser() async {
+    String username = controllerUsername.value.text.trim();
+    String email = controllerEmail.value.text.trim();
+    String imageUrl = controllerImageUrl.value.text.trim();
+    String password = controllerPassword.value.text.trim();
+
+    if (username.isEmpty ||
+        email.isEmpty ||
+        imageUrl.isEmpty ||
+        password.isEmpty) {
+      return;
+    }
+
+    final data = {
+      "name": username,
+      "imageUrl": imageUrl,
+      "email": email,
+      "password": password,
+    };
+
+    await Network.methodPut(
+      api: Network.users,
+      id: widget.user.id,
+      baseUrl: Network.baseUrlUsers,
+      data: data,
+    );
+
+    Navigator.pop(context, "Hammasi Joyda");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Create User")),
+      appBar: AppBar(title: const Text("Edit User")),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -53,7 +84,7 @@ class _UserEditPageState extends State<UserEditPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: editUser,
         child: const Icon(Icons.check),
       ),
     );

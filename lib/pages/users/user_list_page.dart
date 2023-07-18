@@ -37,6 +37,15 @@ class _UserListPageState extends State<UserListPage> {
     }
   }
 
+  void editUser(User user) async{
+    setState(() => isLoading = true);
+    final msg = await Navigator.push(context, MaterialPageRoute(builder: (context) => UserEditPage(user: user)));
+    setState(() => isLoading = false);
+    if(msg == "Hammasi Joyda") {
+      getAllUser();
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -55,9 +64,7 @@ class _UserListPageState extends State<UserListPage> {
               final user = users[i];
               return Card(
                 child: ListTile(
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => UserEditPage(user: user)));
-                  },
+                  onLongPress: () => editUser(user),
                   title: Text(user.name),
                   subtitle: Text(user.email),
                   leading: CircleAvatar(

@@ -61,6 +61,18 @@ sealed class Network {
     }
   }
 
+  static Future<void> methodPut({required String api, required Object id, Map<String, String> headers = headers, String baseUrl = baseUrl, required Map<String, Object?> data}) async {
+    try {
+      Uri url = Uri.https(baseUrl, "$api/$id");
+      final response = await http.put(url, body: data);
+      if(response.statusCode == 200 || response.statusCode == 201) {
+        debugPrint(response.body);
+      }
+    } catch(e) {
+      debugPrint(e.toString());
+    }
+  }
+
   static List<Movie> parseMovieList(String data) {
     final json = jsonDecode(data) as List; /// String => json(Map, List, ...)
     return json.map((item) => Movie.fromJson(item)).toList(); /// json => object
