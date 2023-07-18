@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:learn_http/models/users.dart';
-import 'package:learn_http/pages/users/user_edit_page.dart';
 import 'package:learn_http/services/network_service.dart';
 import 'package:learn_http/pages/users/user_detail_page.dart';
 
@@ -29,21 +28,13 @@ class _UserListPageState extends State<UserListPage> {
   }
 
   void createUser() async {
-    setState(() => isLoading = true);
     final msg = await Navigator.of(context).push(MaterialPageRoute(builder: (context) => const UserDetailPage()));
-    setState(() => isLoading = false);
-    if(msg == "Hammasi Joyda") {
-      getAllUser();
-    }
+    if(msg == "Done") getAllUser();
   }
 
   void editUser(User user) async{
-    setState(() => isLoading = true);
-    final msg = await Navigator.push(context, MaterialPageRoute(builder: (context) => UserEditPage(user: user)));
-    setState(() => isLoading = false);
-    if(msg == "Hammasi Joyda") {
-      getAllUser();
-    }
+    final msg = await Navigator.push(context, MaterialPageRoute(builder: (context) => UserDetailPage(user: user)));
+    if(msg == "Done") getAllUser();
   }
 
   @override
@@ -51,6 +42,7 @@ class _UserListPageState extends State<UserListPage> {
     super.initState();
     getAllUser();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +61,7 @@ class _UserListPageState extends State<UserListPage> {
                   subtitle: Text(user.email),
                   leading: CircleAvatar(
                     child: Center(
-                      child: Text(user.id.toString()),
+                      child: Text((i + 1).toString()),
                     ),
                   ),
                   trailing: IconButton(onPressed: () {

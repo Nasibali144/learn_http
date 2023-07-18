@@ -52,7 +52,7 @@ sealed class Network {
   static Future<void> methodPost({required String api, Map<String, String> headers = headers, String baseUrl = baseUrl, required Map<String, Object?> data}) async {
     try {
       Uri url = Uri.https(baseUrl, api);
-      final response = await http.post(url, body: data);
+      final response = await http.post(url, body: jsonEncode(data));
       if(response.statusCode == 200 || response.statusCode == 201) {
         debugPrint(response.body);
       }
@@ -64,7 +64,7 @@ sealed class Network {
   static Future<void> methodPut({required String api, required Object id, Map<String, String> headers = headers, String baseUrl = baseUrl, required Map<String, Object?> data}) async {
     try {
       Uri url = Uri.https(baseUrl, "$api/$id");
-      final response = await http.put(url, body: data);
+      final response = await http.put(url, body: jsonEncode(data));
       if(response.statusCode == 200 || response.statusCode == 201) {
         debugPrint(response.body);
       }

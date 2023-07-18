@@ -32,4 +32,13 @@ class User {
         password: json['password'] as String,
         id: json['id'] as String,
       );
+
+  Map<String, Object?> toJson() => {
+    "name": name,
+    "imageUrl": imageUrl,
+    "email": email,
+    "password": password,
+    "createdAt": createdAt,
+    "id": id,
+  };
 }
