@@ -20,7 +20,7 @@ sealed class Network {
   static const users = "/api/v2/users";
 
   static const Map<String, String> headers = {
-    "Content-Type": "application/json",
+    "Content-Type": "application/json; charset=UTF-8",
   };
 
   static Future<String?> methodGet({required String api, Object? id, Map<String, String> headers = headers, String baseUrl = baseUrl}) async {
@@ -28,11 +28,13 @@ sealed class Network {
       Uri url = Uri.https(baseUrl, "$api${id != null ? "/$id" : ""}");
       final response = await http.get(url, headers: headers);
       if(response.statusCode == 200) {
-        return response.body;
+        // return response.body;
+        return utf8.decoder.convert(response.bodyBytes);
       }
     } catch(e) {
       return null;
     }
+    return null;
   }
 
   static Future<void> methodDelete({required String api, required Object id, Map<String, String> headers = headers, String baseUrl = baseUrl}) async {

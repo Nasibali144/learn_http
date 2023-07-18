@@ -3,11 +3,18 @@ import 'package:learn_http/pages/harry_potter/harry_home_page.dart';
 import 'package:learn_http/pages/movie/home_page.dart';
 import 'package:learn_http/pages/users/user_list_page.dart';
 
-class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Center(
         child: Column(

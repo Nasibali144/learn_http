@@ -46,29 +46,29 @@ class _UserDetailPageState extends State<UserDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Create User")),
+      appBar: AppBar(title: const Text("Create User")),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
             TextField(
                 controller: controllerUsername,
-                decoration: InputDecoration(labelText: "Username")),
+                decoration: const InputDecoration(labelText: "Username")),
             TextField(
                 controller: controllerEmail,
-                decoration: InputDecoration(labelText: "Email")),
+                decoration: const InputDecoration(labelText: "Email")),
             TextField(
                 controller: controllerImageUrl,
-                decoration: InputDecoration(labelText: "ImageUrl")),
+                decoration: const InputDecoration(labelText: "ImageUrl")),
             TextField(
                 controller: controllerPassword,
-                decoration: InputDecoration(labelText: "Password")),
+                decoration: const InputDecoration(labelText: "Password")),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: createUser,
-        child: Icon(Icons.check),
+        child: const Icon(Icons.check),
       ),
     );
   }
